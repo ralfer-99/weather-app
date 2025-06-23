@@ -57,7 +57,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-900 via-blue-600 to-blue-300 flex items-center justify-center p-6 transition-all duration-300">
+    <div className="min-h-screen bg-gradient-to-br from-blue-900 via-blue-700 to-blue-300 flex items-center justify-center p-6 transition-all duration-300">
       <div className="bg-white/10 backdrop-blur-[10px] border border-white/20 rounded-[30px] shadow-2xl w-full max-w-xl p-8 text-white transition-all duration-300">
         <div className="relative mb-6 flex gap-2">
           <input
