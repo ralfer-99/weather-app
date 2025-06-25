@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://ralfer-99.github.io/weather-app",
+  "homepage": "https://ralfer-99.github.io/weather-app/main.jsx",
 
  "scripts": {
   "dev": "vite",
