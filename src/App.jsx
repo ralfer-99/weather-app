@@ -14,7 +14,6 @@ export default function App() {
     loadWeather(city);
   }, [city]);
 
-  // Load weather for selected city
   const loadWeather = async (cityName) => {
     setLoading(true);
     setError("");
@@ -28,7 +27,6 @@ export default function App() {
     setLoading(false);
   };
 
-  // Fetch location suggestions when input changes (debounced)
   useEffect(() => {
     if (!input) {
       setSuggestions([]);
@@ -42,12 +40,11 @@ export default function App() {
       } catch {
         setSuggestions([]);
       }
-    }, 300); // 300ms debounce
+    }, 300);
 
     return () => clearTimeout(timeoutId);
   }, [input]);
 
-  // Handle Search button click or enter key press
   const handleSearch = () => {
     if (input.trim()) {
       setCity(input.trim());
@@ -57,23 +54,23 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-900 via-blue-700 to-blue-300 flex items-center justify-center p-6 transition-all duration-300">
-      <div className="bg-white/10 backdrop-blur-[10px] border border-white/20 rounded-[30px] shadow-2xl w-full max-w-xl p-8 text-white transition-all duration-300">
-        <div className="relative mb-6 flex gap-2">
+    <div className="min-h-screen bg-gradient-to-br from-blue-900 via-blue-700 to-blue-300 flex items-center justify-center p-4 transition-all duration-300">
+      <div className="bg-white/10 backdrop-blur-[10px] border border-white/20 rounded-[30px] shadow-2xl w-full max-w-2xl px-6 py-8 sm:px-8 md:px-10 text-white transition-all duration-300">
+        
+        {/* ✅ Search Bar */}
+        <div className="relative mb-6 flex flex-row gap-2 flex-wrap">
           <input
             type="text"
-            className="flex-1 rounded-full px-5 py-3 bg-white/20 text-white placeholder-white/70 outline-none backdrop-blur-md text-sm"
+            className="flex-1 rounded-full px-5 py-3 bg-white/20 text-white placeholder-white/70 outline-none backdrop-blur-md text-sm min-w-[200px]"
             placeholder="Search city..."
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={(e) => {
-              if (e.key === "Enter") {
-                handleSearch();
-              }
+              if (e.key === "Enter") handleSearch();
             }}
           />
           <button
-            className="px-5 py-3 rounded-full bg-purple-700 hover:bg-purple-800 text-white font-semibold"
+            className="px-5 py-3 min-w-[100px] rounded-full bg-purple-700 hover:bg-purple-800 text-white font-semibold"
             onClick={handleSearch}
           >
             Search
@@ -98,6 +95,7 @@ export default function App() {
           )}
         </div>
 
+        {/* Weather Result */}
         {loading ? (
           <div className="text-center font-semibold">Loading...</div>
         ) : error ? (
